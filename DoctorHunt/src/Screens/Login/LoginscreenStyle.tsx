@@ -1,0 +1,68 @@
+import { StyleSheet } from 'react-native';
+import colors from '../../HelperFiles/Colors';
+const styles = StyleSheet.create({
+container:{
+    flex:1,
+    paddingTop:127,
+    paddingHorizontal:45,
+},
+topContainer:{
+    flexDirection:'column',
+
+},
+title:{
+    fontSize:24,
+    fontWeight:'400',
+    color:colors.DARK_BLACK,
+    lineHeight:23,
+},
+subTitle:{
+    fontSize:14,
+    fontWeight:'400',
+    color:colors.LIGHT_VIOLET,
+    textAlign:'center',
+    marginTop:6,
+    lineHeight:28,
+},
+buttonContainer:{
+    flexDirection:'row',
+    marginTop:78,
+    gap:30,
+    marginBottom:38,
+},
+btnStyle:{
+    flexDirection:'row',
+    height:54,
+    width:160,
+    gap:5,
+    backgroundColor:colors.DEFAULT_WHITE,
+    borderRadius:12,
+    justifyContent:'center',
+    alignItems:'center',
+    elevation:5,
+},
+btnIcon:{
+    height:19,
+    width:19,
+},
+btnTitle:{
+    fontSize:16,
+    fontWeight:'300',
+    lineHeight:18,
+    color:colors.DARK_BLACK,
+},
+inputContainer:{
+    flexDirection:'row',
+    borderColor:colors.BLUR_VIOLET,
+    borderWidth:2,
+    marginBottom:37,
+    borderRadius:12,
+    paddingHorizontal:20,
+},
+input:{
+    height:50,
+    width:'100%',
+    color:colors.VIOLET,
+},
+});
+export default styles;
