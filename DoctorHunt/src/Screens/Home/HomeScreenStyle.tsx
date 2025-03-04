@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
         fontWeight: '300',
         lineHeight: 23,
         color: colors.BLUR_WHITE,
+        fontFamily:'RUBIC_BLACK',
     },
     subTitle: {
         fontSize: 25,

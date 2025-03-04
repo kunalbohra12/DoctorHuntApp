@@ -56,7 +56,7 @@ const DoctorDataListComponent = () => {
                 renderItem={renderItem}
                 keyExtractor={(item) => item.id}
                 horizontal={false}
-                showsHorizontalScrollIndicator={false}
+                showsVerticalScrollIndicator={false}
             />
         </View>
     );

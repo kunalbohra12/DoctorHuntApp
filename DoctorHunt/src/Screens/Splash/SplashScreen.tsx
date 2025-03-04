@@ -12,7 +12,7 @@ const SplashScreen = () => {
       // if(isLogin){
       //   navigation.navigate('LoginScreen');
       // }else{
-      navigation.navigate('BottomTabBarScreen');
+      navigation.navigate('LoginScreen');
       // }
     }, 2000);
     return () => clearTimeout(timer);

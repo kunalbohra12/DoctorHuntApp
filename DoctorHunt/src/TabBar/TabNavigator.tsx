@@ -64,8 +64,8 @@ const BottomTabBarScreen = () => {
             })}
         >
             <Tab.Screen name="Home" component={HomeScreen} />
-            <Tab.Screen name="Onboard" component={OnboardingScreen} />
-            <Tab.Screen name="Favourite" component={FavouriteScreen} />
+            <Tab.Screen name="Onboard" component={FavouriteScreen} />
+            <Tab.Screen name="Favourite" component={OnboardingScreen} />
             <Tab.Screen name="Chat" component={SettingsScreen} />
         </Tab.Navigator>
     );

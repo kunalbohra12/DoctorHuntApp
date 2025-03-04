@@ -4,11 +4,11 @@ const styles = StyleSheet.create({
 container:{
     flex:1,
     paddingTop:127,
-    paddingHorizontal:45,
 },
 topContainer:{
     flexDirection:'column',
-
+    paddingHorizontal:45,
+    alignItems:'center',
 },
 title:{
     fontSize:24,
@@ -29,6 +29,9 @@ buttonContainer:{
     marginTop:78,
     gap:30,
     marginBottom:38,
+    justifyContent:'center',
+    alignItems:'center',
+    paddingHorizontal:20,
 },
 btnStyle:{
     flexDirection:'row',
@@ -57,12 +60,50 @@ inputContainer:{
     borderWidth:2,
     marginBottom:37,
     borderRadius:12,
-    paddingHorizontal:20,
+    marginHorizontal:40,
+    alignItems:'center',
 },
 input:{
     height:50,
-    width:'100%',
+    width:'85%',
     color:colors.VIOLET,
+    paddingHorizontal:10,
+},
+highlightTxt:{
+    fontSize:16,
+    fontWeight:'400',
+    lineHeight:16,
+    color:colors.LIGHT_GREEN,
+    textAlign:'center',
+    marginTop:14,
+
+},
+bottomTxt:{
+    fontSize:14,
+    fontWeight:'400',
+    lineHeight:16,
+    color:colors.LIGHT_GREEN,
+    textAlign:'center',
+},
+bottomBtnContainer:{
+    marginHorizontal:40,
+},
+icon:{
+    height:16,
+    width:14,
+},
+bottomContainer:{
+    flexDirection:'row',
+    alignItems:'center',
+    justifyContent:'center',
+    marginTop:100,
+},
+mediumTxt:{
+    fontSize:16,
+    fontWeight:'400',
+    lineHeight:16,
+    color:colors.LIGHT_GREEN,
+    textAlign:'center',
 },
 });
 export default styles;

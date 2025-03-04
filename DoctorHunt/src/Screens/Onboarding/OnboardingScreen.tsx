@@ -6,7 +6,6 @@ import GlobalStyles from '../../HelperFiles/GlobalStyles';
 import ButtonComponent from '../../Components/ButtonComponent';
 import PagerView from 'react-native-pager-view';
 import { useNavigation } from '@react-navigation/native';
-
 const OnboardingScreen = () => {
     const navigation = useNavigation();
     return (
