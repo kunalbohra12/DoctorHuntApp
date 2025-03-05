@@ -14,7 +14,7 @@ const DoctorsListComponent = () => {
 
     ];
 
-    const renderItem = ({item}:any) => {
+    const renderItem = ({ item }: any) => {
         return (
             <View style={styles.itemContainer}>
                 <Image source={images.DOCTOR_IMAGE} style={styles.itemImage} />

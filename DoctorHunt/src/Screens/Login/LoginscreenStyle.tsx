@@ -67,7 +67,7 @@ input:{
     height:50,
     width:'85%',
     color:colors.VIOLET,
-    paddingHorizontal:10,
+    paddingHorizontal:8,
 },
 highlightTxt:{
     fontSize:16,
@@ -89,8 +89,9 @@ bottomBtnContainer:{
     marginHorizontal:40,
 },
 icon:{
-    height:16,
-    width:14,
+    height:14,
+    width:17,
+    marginLeft:10,
 },
 bottomContainer:{
     flexDirection:'row',

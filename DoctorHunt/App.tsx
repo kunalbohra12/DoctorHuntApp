@@ -5,7 +5,7 @@
  *
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import OnboardingScreen from './src/Screens/Onboarding/OnboardingScreen';
@@ -19,9 +19,17 @@ import BottomTabBarScreen from './src/TabBar/TabNavigator';
 import ForgotPasswordComponent from './src/Components/ForgotPassword/ForgotPasswordComponent';
 import ResetPasswordComponent from './src/Components/ResetPassword/ResetPasswordComponent';
 import MapScreen from './src/Screens/MapScreen/MapScreen';
-const Stack = createNativeStackNavigator();
+import LoaderComponent from './src/Components/Loader/LoaderComponent';
+import { RootStackParamList } from './src/navigation/navigationType';
+import { BackHandler } from 'react-native';
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const App = () => {
+  useEffect(() => {
+    const backAction = () => true;
+    const backHandler = BackHandler.addEventListener('hardwareBackPress', backAction);
+    return () => backHandler.remove();
+}, []);
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="SplashScreen">
@@ -35,6 +43,7 @@ const App = () => {
         <Stack.Screen name="ForgotPasswordComponent" options={{ headerShown: false }} component={ForgotPasswordComponent} />
         <Stack.Screen name="ResetPasswordComponent" options={{ headerShown: false }} component={ResetPasswordComponent} />
         <Stack.Screen name="MapScreen" options={{ headerShown: false }} component={MapScreen} />
+        <Stack.Screen name="LoaderComponent" options={{ headerShown: false }} component={LoaderComponent} />
       </Stack.Navigator>
     </NavigationContainer>
   );

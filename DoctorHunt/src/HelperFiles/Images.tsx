@@ -30,6 +30,6 @@ PERSON: require('../assets/person.png'),
 GOOGLE_ICON: require('../assets/goggle_icon.png'),
 FACEBOOK_ICON: require('../assets/facebook_icon.png'),
 VISIBILITY_OFF: require('../assets/visibility_off.png'),
-SECURE_ICON: require('../assets/eye_icon.png'),
+SECURE_ICON: require('../assets/hide.png'),
 };
 export default images;

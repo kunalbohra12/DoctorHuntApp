@@ -33,10 +33,7 @@ export default StyleSheet.create({
   },
   inputContainer:{
     flexDirection:'row',
-    borderColor:colors.BLUR_VIOLET,
-    borderWidth:2,
     marginBottom:37,
-    borderRadius:12,
     marginTop:35,
     alignItems:'center',
 },
@@ -46,4 +43,5 @@ input:{
     color:colors.VIOLET,
     paddingHorizontal:10,
 },
+
 });

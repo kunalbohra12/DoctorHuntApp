@@ -5,9 +5,9 @@ import styles from './OnboardingStyle';
 import GlobalStyles from '../../HelperFiles/GlobalStyles';
 import ButtonComponent from '../../Components/ButtonComponent';
 import PagerView from 'react-native-pager-view';
-import { useNavigation } from '@react-navigation/native';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
 const OnboardingScreen = () => {
-    const navigation = useNavigation();
+    const navigation = useNavigation<NavigationProp<any>>();
     return (
         <>
             <StatusBar

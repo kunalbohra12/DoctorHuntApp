@@ -1,90 +1,109 @@
-import { View, Text, ImageBackground, Image, TextInput, Pressable,CheckBox, Alert } from 'react-native';
+import { View, Text, ImageBackground, Image, TextInput, Pressable, Alert, ScrollView, KeyboardAvoidingView } from 'react-native';
 import React, { useState } from 'react';
 import images from '../../HelperFiles/Images';
 import styles from './SignUpScreenStyle';
 import ButtonComponent from '../../Components/ButtonComponent';
 import GlobalStyles from '../../HelperFiles/GlobalStyles';
 import colors from '../../HelperFiles/Colors';
-import { useNavigation } from '@react-navigation/native';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { SignUpRequest } from '../../HelperFiles/api/AuthApiService';
+import LoaderComponent from '../../Components/Loader/LoaderComponent';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import OtpComponent from '../../Components/OtpComponent/OtpComponent';
 
 const SignUpScreen = () => {
-    const navigation = useNavigation();
-    const [isSelected, setIsSelected] = useState(false);
+    const navigation = useNavigation<NavigationProp<any>>();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [isShow, setIsShow] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [visible, setIsVisible] = useState(false);
     const handleRegister = async () => {
+        setLoading(true);
         try {
             const response = await SignUpRequest({
                 email: email, password: password,
             });
-            if (response.data != null || response.success == true) {
-                console.log('Login Success:', response);
+            if (response.data || response.success) {
+                console.log(email);
+                console.log(password);
+                setLoading(false);
+                console.log('User Register Successfully:', response);
+                setIsVisible(true);
+                await AsyncStorage.setItem('userData', JSON.stringify(response.data));
             } else {
-                console.log('Login Failed:', response.message);
-                Alert.alert('Message', response.message);
+                console.log('SignUp Failed:', response?.message || 'No data received');
+                setLoading(false);
             }
         } catch (error) {
-            console.error('Login Failed:', error);
+            setLoading(false);
+            console.error('SignUp process Failed:', error);
         }
     };
     return (
-        <ImageBackground source={images.GRADIENT_BG} style={styles.container}>
-            <View style={styles.topContainer}>
-                <Text style={styles.title}>Join us to start searching</Text>
-                <Text style={styles.subTitle}>You can search course, apply course and find
-                    scholarship for abroad studies</Text>
-            </View>
-            <View style={styles.buttonContainer}>
-                <View style={styles.btnStyle}>
-                    <Image source={images.GOOGLE_ICON} style={styles.btnIcon} />
-                    <Text style={styles.btnTitle}>Google</Text>
-                </View>
-                <View style={styles.btnStyle}>
-                    <Image source={images.FACEBOOK_ICON} style={styles.btnIcon} />
-                    <Text style={styles.btnTitle}>Facebook</Text>
-                </View>
-            </View>
-            <View style={styles.inputContainer}>
-                <TextInput placeholder="name" placeholderTextColor={colors.VIOLET} style={styles.input} />
-            </View>
-            <View style={styles.inputContainer}>
-                <TextInput placeholder="email" placeholderTextColor={colors.VIOLET} style={styles.input} />
-            </View>
-            <View style={styles.inputContainer}>
-                <TextInput
-                secureTextEntry={true}
-                onChangeText={(text)=>setPassword(text)}
-                 placeholder="password"
-                 placeholderTextColor={colors.VIOLET}
-                 style={styles.input}
-                value={password}
-                   />
-                <Image style={styles.btnIcon} source={images.VISIBILITY_OFF} />
-            </View>
-            {/* <View style={styles.checkboxContainer}>
-                <CheckBox
-                    value={isSelected}
-                    onValueChange={setSelection}
-                    style={styles.checkbox}
-                />
-                <Text style={styles.label}>I agree with the Terms of Service & Privacy Policy</Text>
-            </View> */}
-            <View style={styles.btnContainer}>
-                <ButtonComponent
-                    onPress={handleRegister}
-                    title="Sign Up"
-                    buttonStyle={GlobalStyles.btnStyle}
-                    textStyle={GlobalStyles.btnTxtStyle}
-                />
-            </View>
-            <View style={styles.bottomContainer}>
-                <Text style={styles.bottomTxt}>Have an account?</Text>
-                <Pressable onPress={() => navigation.navigate('LoginScreen')}>
-                    <Text style={styles.highlightTxt}>Log In</Text>
-                </Pressable>
-            </View>
-        </ImageBackground>
+        <ScrollView style={GlobalStyles.gradientBG}>
+            <KeyboardAvoidingView
+                style={GlobalStyles.gradientBG}>
+                <ImageBackground source={images.GRADIENT_BG} style={styles.container}>
+                    <LoaderComponent visible={loading} />
+                    <View style={styles.topContainer}>
+                        <Text style={styles.title}>Join us to start searching</Text>
+                        <Text style={styles.subTitle}>You can search course, apply course and find
+                            scholarship for abroad studies</Text>
+                    </View>
+                    <View style={styles.buttonContainer}>
+                        <View style={styles.btnStyle}>
+                            <Image source={images.GOOGLE_ICON} style={styles.btnIcon} />
+                            <Text style={styles.btnTitle}>Google</Text>
+                        </View>
+                        <View style={styles.btnStyle}>
+                            <Image source={images.FACEBOOK_ICON} style={styles.btnIcon} />
+                            <Text style={styles.btnTitle}>Facebook</Text>
+                        </View>
+                    </View>
+                    <View style={styles.inputContainer}>
+                        <TextInput placeholder="name" placeholderTextColor={colors.VIOLET} style={styles.input} />
+                    </View>
+                    <View style={styles.inputContainer}>
+                        <TextInput
+                            placeholder="Email"
+                            placeholderTextColor={colors.VIOLET}
+                            style={styles.input}
+                            value={email}
+                            onChangeText={(text) => setEmail(text)}
+                        />
+                    </View>
+                    <View style={styles.inputContainer}>
+                        <TextInput
+                            secureTextEntry={isShow}
+                            placeholder="Password"
+                            placeholderTextColor={colors.VIOLET}
+                            style={styles.input}
+                            value={password}
+                            onChangeText={(text) => setPassword(text)}
+                        />
+                        <Pressable onPress={() => setIsShow(!isShow)}>
+                            <Image style={styles.icon} source={isShow ? images.VISIBILITY_OFF : images.VISIBILITY_OFF} />
+                        </Pressable>
+                    </View>
+                    <View style={styles.btnContainer}>
+                        <ButtonComponent
+                            onPress={handleRegister}
+                            title="Sign Up"
+                            buttonStyle={GlobalStyles.btnStyle}
+                            textStyle={GlobalStyles.btnTxtStyle}
+                        />
+                    </View>
+                    <View style={styles.bottomContainer}>
+                        <Text style={styles.bottomTxt}>Have an account?</Text>
+                        <Pressable onPress={() => navigation.navigate('LoginScreen')}>
+                            <Text style={styles.highlightTxt}>Log In</Text>
+                        </Pressable>
+                    </View>
+                    <OtpComponent isVisible={visible} />
+                </ImageBackground>
+            </KeyboardAvoidingView>
+        </ScrollView>
     );
 };
 

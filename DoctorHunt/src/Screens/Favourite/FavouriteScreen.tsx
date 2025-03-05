@@ -5,7 +5,7 @@ import images from '../../HelperFiles/Images';
 import GlobalStyles from '../../HelperFiles/GlobalStyles';
 import colors from '../../HelperFiles/Colors';
 import styles from '../FindDoctor/FindDoctorScreenStyle';
-import DoctorDataListComponent from '../../Components/DoctorDataList/DoctorDataListComponent';
+import RatedDoctorsListComponent from '../../Components/RatedDoctorList/RatedDoctorListComponent';
 const FavouriteDoctorScreen = () => {
     return (
       <View style={[GlobalStyles.gradientBG]}>
@@ -21,6 +21,7 @@ const FavouriteDoctorScreen = () => {
               <TextInput style={styles.searchInput} placeholder="Search.." placeholderTextColor={colors.LIGHT_VIOLET}/>
               <Image source={images.CROSS_ICON} style={styles.logo} />
           </View>
+          <RatedDoctorsListComponent/>
       </ImageBackground>
   </View>
     );

@@ -13,6 +13,7 @@ const colors = {
     RED: '#FF0000',
     BLUR_VIOLET:'#67729429',
     VIOLET:'#677294',
+    LOW_VIOLET:'rgba(103, 114, 148, 0.16)',
 
 };
 export default colors;

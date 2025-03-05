@@ -41,11 +41,12 @@ const GlobalStyles = StyleSheet.create({
         height: 54,
         backgroundColor: colors.DEFAULT_WHITE,
         marginTop: -25,
-        borderRadius: 6,
+        borderRadius: 12,
         marginHorizontal: 20,
         justifyContent: 'center',
         alignItems: 'center',
         paddingHorizontal: 20,
+        marginBottom:20,
     },
     containerSpacing:{
         paddingHorizontal:20,

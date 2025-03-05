@@ -9,6 +9,7 @@ import { Image, View } from 'react-native';
 import FavouriteScreen from '../Screens/Favourite/FavouriteScreen';
 import SettingsScreen from '../Screens/Settings/SettingsScreen';
 import colors from '../HelperFiles/Colors';
+import DiagonsticsTestScreen from '../Screens/DiagonsticsTests/DiagonsticsTestScreen';
 // import images from '../HelperFiles/Images';
 const Tab = createBottomTabNavigator();
 
@@ -65,7 +66,7 @@ const BottomTabBarScreen = () => {
         >
             <Tab.Screen name="Home" component={HomeScreen} />
             <Tab.Screen name="Onboard" component={FavouriteScreen} />
-            <Tab.Screen name="Favourite" component={OnboardingScreen} />
+            <Tab.Screen name="Favourite" component={DiagonsticsTestScreen} />
             <Tab.Screen name="Chat" component={SettingsScreen} />
         </Tab.Navigator>
     );

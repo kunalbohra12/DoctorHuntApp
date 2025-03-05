@@ -63,12 +63,13 @@ inputContainer:{
     height:54,
     borderRadius:12,
     marginHorizontal:20,
-    paddingHorizontal:15,
+    paddingLeft:15,
+    paddingRight:0,
     alignItems:'center',
 },
 input:{
     height:50,
-    width:'90%',
+    width:'80%',
     color:colors.VIOLET,
 },
 highlightTxt:{
@@ -89,11 +90,13 @@ bottomContainer:{
     flexDirection:'row',
     alignItems:'center',
     justifyContent:'center',
-    marginTop:100,
+    marginTop:60,
+    paddingBottom:15,
 },
 icon:{
     height:14,
-    width:16,
+    width:17,
+    marginLeft:15,
 },
 btnContainer:{
     paddingHorizontal:40,

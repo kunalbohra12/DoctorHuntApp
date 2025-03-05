@@ -11,7 +11,7 @@ export default StyleSheet.create({
   modalContainer: {
     width: '100%',
     paddingHorizontal: 20,
-    height:460,
+    height:360,
     paddingTop:44,
     backgroundColor: '#fff',
     borderTopStartRadius: 30,
@@ -33,17 +33,16 @@ export default StyleSheet.create({
   },
   inputContainer:{
     flexDirection:'row',
-    borderColor:colors.BLUR_VIOLET,
-    borderWidth:2,
-    borderRadius:12,
     marginTop:35,
     alignItems:'center',
     justifyContent:'center',
+    marginBottom:37,
+    marginHorizontal:40,
 },
 input:{
     height:50,
     width:'85%',
-    color:colors.VIOLET,
+    color:colors.LOW_VIOLET,
     paddingHorizontal:10,
 },
 btnIcon:{
@@ -52,5 +51,12 @@ btnIcon:{
   },
   topMargin:{
     marginTop:38,
+  },
+  pincodeContainer:{
+    height:55,
+    width:55,
+    borderWidth:2,
+    borderColor:colors.LOW_VIOLET,
+    borderRadius:8,
   },
 });

@@ -4,16 +4,17 @@ import styles from './SplashStyle';
 import images from '../../HelperFiles/Images';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import LottieView from 'lottie-react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const SplashScreen = () => {
   const navigation = useNavigation<NavigationProp<any>>();
   useEffect(() => {
     const timer = setTimeout(async () => {
-      // const isLogin = await AsyncStorage.getItem('userToken');
-      // if(isLogin){
-      //   navigation.navigate('LoginScreen');
-      // }else{
+      const isLogin = await AsyncStorage.getItem('userData');
+      if(isLogin){
+        navigation.navigate('BottomTabBarScreen');
+      }else{
       navigation.navigate('LoginScreen');
-      // }
+      }
     }, 2000);
     return () => clearTimeout(timer);
   }, [navigation]);
