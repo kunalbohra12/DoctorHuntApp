@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
     width: 116,
     marginRight: 20,
     resizeMode: 'stretch',
+    marginHorizontal:20,
   },
   blurredView: {
     opacity: 0.3,

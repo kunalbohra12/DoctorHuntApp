@@ -32,7 +32,6 @@ const SignUpRequest = async (body: SignUpType): Promise<ApiResponse<any>> =>
 const VerifyOtp = async (body: VerifyOtpType): Promise<ApiResponse<any>> =>
   await makeRequest('POST', API_ENDPOINTS.VERIFY_OTP, body);
 
-
 export {
   LoginRequest,
   SignUpRequest,

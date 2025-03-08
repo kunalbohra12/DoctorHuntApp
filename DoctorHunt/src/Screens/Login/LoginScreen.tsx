@@ -23,7 +23,19 @@ const LoginScreen = () => {
         setIsForgotModalVisible(false);
         setIsResetModalVisible(true);
     };
+    const validateEmail = (email: string) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
     const handleLogin = async () => {
+        if (!email || !password) {
+            Alert.alert('Message', 'Email and Password are required');
+            return;
+        }
+        if (!validateEmail(email)) {
+            Alert.alert('Error', 'Invalid email format');
+            return;
+        }
         setLoading(false);
         try {
             const response = await LoginRequest({
@@ -57,7 +69,6 @@ const LoginScreen = () => {
                 hidden={true}
             />
             <ImageBackground source={images.GRADIENT_BG} style={styles.container}>
-                <ScrollView style={GlobalStyles.gradientBG}>
                     <LoaderComponent visible={loading} />
                     <View style={styles.topContainer}>
                         <Text style={styles.title}>Welcome back</Text>
@@ -122,7 +133,6 @@ const LoginScreen = () => {
                             <Text style={styles.mediumTxt}>Join us</Text>
                         </Pressable>
                     </View>
-                </ScrollView>
             </ImageBackground>
         </KeyboardAvoidingView>
     );

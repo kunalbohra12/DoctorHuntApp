@@ -35,6 +35,7 @@ const GlobalStyles = StyleSheet.create({
         fontWeight:'500',
         marginTop:30,
         marginBottom:30,
+        marginLeft:20,
     },
     searchBar: {
         flexDirection: 'row',

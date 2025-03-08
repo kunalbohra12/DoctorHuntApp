@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     justifyContent: 'center',
     alignItems: 'center',
-    marginRight: 20,
+    marginRight:15,
   },
   icon: {
     height: 37,
@@ -16,6 +16,8 @@ const styles = StyleSheet.create({
   listContainer: {
     flexDirection: 'row',
     marginTop: 30,
+    marginHorizontal:20,
+
   },
 });
 export default styles;

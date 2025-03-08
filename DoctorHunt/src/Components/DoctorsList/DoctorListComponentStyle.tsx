@@ -8,6 +8,8 @@ const styles = StyleSheet.create({
         marginTop: 30,
         flexDirection: 'row',
         justifyContent: 'space-between',
+        marginHorizontal:20,
+
     },
     headerTitle: {
         fontSize: 18,
@@ -37,6 +39,7 @@ const styles = StyleSheet.create({
         backgroundColor:colors.DEFAULT_WHITE,
         borderRadius:12,
         marginTop:12,
+        marginHorizontal:20,
     },
     itemImage:{
         height:180,

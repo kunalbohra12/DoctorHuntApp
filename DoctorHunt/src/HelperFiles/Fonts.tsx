@@ -1,6 +1,6 @@
-export default {
+const Fonts  = {
     RUBIC_BLACK: 'Rubik-Black',
-    RUBIC_BLACKITALIC: 'Rubik-BlackItalic',
+    RUBIC_BLACKITALIC: 'Rubik-BlackItalic.ttf',
     RUBIC_BOLD: 'Rubik-Bold',
     RUBIC_BOLDITALIC: 'Rubik-BoldItalic',
     RUBIC_EXTRABOLD: 'Rubik-ExtraBoldItalic',
@@ -14,3 +14,4 @@ export default {
     RUBIC_SEMIBOLD: 'Rubik-Semibold',
     RUBIC_SEMIBOLDITALIC: 'Rubik-SemiBoldItalic',
   };
+  export default Fonts;

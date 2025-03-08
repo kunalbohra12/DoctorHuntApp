@@ -31,5 +31,10 @@ GOOGLE_ICON: require('../assets/goggle_icon.png'),
 FACEBOOK_ICON: require('../assets/facebook_icon.png'),
 VISIBILITY_OFF: require('../assets/visibility_off.png'),
 SECURE_ICON: require('../assets/hide.png'),
+LAB_ICON: require('../assets/lab_test.png'),
+MACHINE_ICON: require('../assets/machine_icon.png'),
+FILE_ICON: require('../assets/file_icon.png'),
+TEST_BG: require('../assets/test_bg.png'),
+LAB_BG: require('../assets/lab_bg.png'),
 };
 export default images;

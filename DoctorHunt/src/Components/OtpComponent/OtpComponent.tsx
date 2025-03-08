@@ -1,22 +1,22 @@
-import { View, Modal, Alert, Text } from 'react-native';
+import { View, Modal, Text } from 'react-native';
 import React, { useState } from 'react';
 import styles from './OtpComponentStyle';
 import ButtonComponent from '../ButtonComponent';
 import GlobalStyles from '../../HelperFiles/GlobalStyles';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { VerifyOtp } from '../../HelperFiles/api/AuthApiService';
 import { OtpInput } from 'react-native-otp-entry';
 import colors from '../../HelperFiles/Colors';
-const OtpComponent = ({ isVisible }: any) => {
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+const OtpComponent = ({ isVisible, email, password }: any) => {
+  const navigation = useNavigation<NavigationProp<any>>();
   const [isModalVisible, setIsModalVisible] = useState(true);
-  // const [loading,setLoading] = useState(false);
+  const [otp, setOtp] = useState('');
   const otpVerify = async () => {
     try {
-      const userData = await AsyncStorage.getItem('userData');
-      const registerData = JSON.parse(userData);
-      const response = await VerifyOtp({ email: registerData.email, otp: registerData.otp, password: registerData.password });
+      const response = await VerifyOtp({ email: email, otp: otp, password: password });
       if (response.data || response.success) {
         console.log('otp Response', response);
+        navigation.navigate('BottomTabBarScreen');
       } else {
         console.log('Otp not Verified', response);
       }
@@ -30,35 +30,39 @@ const OtpComponent = ({ isVisible }: any) => {
       transparent={true}
       visible={isVisible}
       onRequestClose={() => {
-        Alert.alert('Modal has been closed.');
-        setIsModalVisible(!isModalVisible);
+        setIsModalVisible(false);
       }}>
-      <View style={styles.modalBackground}>
-        <View style={styles.modalContainer}>
-          <Text style={styles.label}>Enter 4 Digits Code</Text>
-          <Text style={styles.subLabel}>
-            Enter the 4 digits code that you received on
-            your email.
-          </Text>
-          <View style={styles.inputContainer}>
-            <OtpInput
-              numberOfDigits={4}
-              autoFocus={false}
-              focusColor={colors.LIGHT_GREEN}
-              onTextChange={(text) => console.log(text)}
-              theme={{
-                pinCodeContainerStyle: styles.pincodeContainer,
-              }}
+      {/* <TouchableWithoutFeedback onPress={() => setIsModalVisible(false)}> */}
+        <View style={styles.modalBackground}>
+          <View style={styles.modalContainer}>
+            <Text style={styles.label}>Enter 4 Digits Code</Text>
+            <Text style={styles.subLabel}>
+              Enter the 4 digits code that you received on
+              your email.
+            </Text>
+            <View style={styles.inputContainer}>
+              <OtpInput
+                numberOfDigits={4}
+                autoFocus={false}
+                focusColor={colors.LIGHT_GREEN}
+                onTextChange={(text) => {
+                  console.log('OTP Entered:', text);
+                  setOtp(text);
+                }}
+                theme={{
+                  pinCodeContainerStyle: styles.pincodeContainer,
+                }}
+              />
+            </View>
+            <ButtonComponent
+              onPress={otpVerify}
+              title="Continue"
+              buttonStyle={GlobalStyles.btnStyle}
+              textStyle={GlobalStyles.btnTxtStyle}
             />
           </View>
-          <ButtonComponent
-            onPress={otpVerify}
-            title="Continue"
-            buttonStyle={GlobalStyles.btnStyle}
-            textStyle={GlobalStyles.btnTxtStyle}
-          />
         </View>
-      </View>
+      {/* </TouchableWithoutFeedback> */}
     </Modal>
   );
 };

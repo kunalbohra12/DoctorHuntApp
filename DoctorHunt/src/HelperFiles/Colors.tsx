@@ -6,6 +6,7 @@ const colors = {
     LIGHT_BLACK: '#333333',
     LIGHT_VIOLET: 'rgba(103, 114, 148, 0.9)',
     LIGHT_GREEN: '#0EBE7F',
+    GREEN:'#C6EFE5C2',
     DARK_BLUE: '#2E54F4',
     LIGHT_YELLOW: '#FFCF68',
     YELLOW: '#F6D060',

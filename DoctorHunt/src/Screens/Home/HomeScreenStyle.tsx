@@ -58,7 +58,6 @@ const styles = StyleSheet.create({
         fontWeight: '400',
     },
     listContainer: {
-        paddingHorizontal: 20,
     },
     userImg:{
         height:54,

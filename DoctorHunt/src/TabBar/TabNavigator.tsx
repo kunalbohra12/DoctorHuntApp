@@ -3,13 +3,13 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../Screens/Home/HomeScreen';
-import OnboardingScreen from '../Screens/Onboarding/OnboardingScreen';
+// import OnboardingScreen from '../Screens/Onboarding/OnboardingScreen';
 import images from '../HelperFiles/Images';
 import { Image, View } from 'react-native';
 import FavouriteScreen from '../Screens/Favourite/FavouriteScreen';
 import SettingsScreen from '../Screens/Settings/SettingsScreen';
 import colors from '../HelperFiles/Colors';
-import DiagonsticsTestScreen from '../Screens/DiagonsticsTests/DiagonsticsTestScreen';
+import TestScreen from '../Screens/Tests/TestScreen';
 // import images from '../HelperFiles/Images';
 const Tab = createBottomTabNavigator();
 
@@ -66,7 +66,7 @@ const BottomTabBarScreen = () => {
         >
             <Tab.Screen name="Home" component={HomeScreen} />
             <Tab.Screen name="Onboard" component={FavouriteScreen} />
-            <Tab.Screen name="Favourite" component={DiagonsticsTestScreen} />
+            <Tab.Screen name="Favourite" component={TestScreen} />
             <Tab.Screen name="Chat" component={SettingsScreen} />
         </Tab.Navigator>
     );

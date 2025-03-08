@@ -3,12 +3,12 @@ import colors from '../../HelperFiles/Colors';
 const styles = StyleSheet.create({
 container:{
     flex:1,
-    paddingTop:127,
 },
 topContainer:{
     flexDirection:'column',
     paddingHorizontal:45,
     alignItems:'center',
+    marginTop:127,
 },
 title:{
     fontSize:24,

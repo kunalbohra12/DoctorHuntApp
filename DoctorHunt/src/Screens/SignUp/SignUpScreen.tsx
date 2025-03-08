@@ -1,4 +1,4 @@
-import { View, Text, ImageBackground, Image, TextInput, Pressable, Alert, ScrollView, KeyboardAvoidingView } from 'react-native';
+import { View, Text, ImageBackground, Image,Alert,TextInput, Pressable, ScrollView, KeyboardAvoidingView } from 'react-native';
 import React, { useState } from 'react';
 import images from '../../HelperFiles/Images';
 import styles from './SignUpScreenStyle';
@@ -8,7 +8,6 @@ import colors from '../../HelperFiles/Colors';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { SignUpRequest } from '../../HelperFiles/api/AuthApiService';
 import LoaderComponent from '../../Components/Loader/LoaderComponent';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import OtpComponent from '../../Components/OtpComponent/OtpComponent';
 
 const SignUpScreen = () => {
@@ -18,11 +17,24 @@ const SignUpScreen = () => {
     const [isShow, setIsShow] = useState(false);
     const [loading, setLoading] = useState(false);
     const [visible, setIsVisible] = useState(false);
+
+
+    const validateEmail = (email: string) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
     const handleRegister = async () => {
-        setLoading(true);
+        if (!email || !password) {
+            Alert.alert('Message', 'Email and Password are required');
+            return;
+        }
+        if (!validateEmail(email)) {
+            Alert.alert('Error', 'Invalid email format');
+            return;
+        }        setLoading(true);
         try {
             const response = await SignUpRequest({
-                email: email, password: password,
+                email: email.trim(), password: password,
             });
             if (response.data || response.success) {
                 console.log(email);
@@ -30,7 +42,6 @@ const SignUpScreen = () => {
                 setLoading(false);
                 console.log('User Register Successfully:', response);
                 setIsVisible(true);
-                await AsyncStorage.setItem('userData', JSON.stringify(response.data));
             } else {
                 console.log('SignUp Failed:', response?.message || 'No data received');
                 setLoading(false);
@@ -40,7 +51,7 @@ const SignUpScreen = () => {
             console.error('SignUp process Failed:', error);
         }
     };
-    return (
+    return(
         <ScrollView style={GlobalStyles.gradientBG}>
             <KeyboardAvoidingView
                 style={GlobalStyles.gradientBG}>
@@ -100,7 +111,7 @@ const SignUpScreen = () => {
                             <Text style={styles.highlightTxt}>Log In</Text>
                         </Pressable>
                     </View>
-                    <OtpComponent isVisible={visible} />
+                    <OtpComponent isVisible={visible} email={email} password={password} />
                 </ImageBackground>
             </KeyboardAvoidingView>
         </ScrollView>

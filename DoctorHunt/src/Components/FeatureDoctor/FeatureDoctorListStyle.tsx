@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
         marginTop: 30,
         flexDirection: 'row',
         justifyContent: 'space-between',
+        marginHorizontal:20,
     },
     headerTitle: {
         fontSize: 18,
@@ -32,12 +33,12 @@ const styles = StyleSheet.create({
     },
     itemContainer:{
         flexDirection:'column',
-        marginRight:15,
         height:130,
         width:96,
         backgroundColor:colors.DEFAULT_WHITE,
         borderRadius:12,
         marginTop:12,
+        marginHorizontal:20,
     },
     itemHeaderContainer:{
         flexDirection:'row',

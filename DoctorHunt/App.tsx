@@ -22,6 +22,7 @@ import MapScreen from './src/Screens/MapScreen/MapScreen';
 import LoaderComponent from './src/Components/Loader/LoaderComponent';
 import { RootStackParamList } from './src/navigation/navigationType';
 import { BackHandler } from 'react-native';
+import DiagonsticsTestScreen from './src/Screens/DiagonsticsTests/DiagonsticsTestScreen';
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const App = () => {
@@ -44,6 +45,7 @@ const App = () => {
         <Stack.Screen name="ResetPasswordComponent" options={{ headerShown: false }} component={ResetPasswordComponent} />
         <Stack.Screen name="MapScreen" options={{ headerShown: false }} component={MapScreen} />
         <Stack.Screen name="LoaderComponent" options={{ headerShown: false }} component={LoaderComponent} />
+        <Stack.Screen name="DiagonsticsTestScreen" options={{ headerShown: false }} component={DiagonsticsTestScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
